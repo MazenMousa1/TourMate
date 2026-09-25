@@ -1,0 +1,13 @@
+{
+  "name": "TourMate - Travel with locals",
+  "short_name": "TourMate",
+  "description": "Discover local guides and memorable group tours.",
+  "start_url": "./index.html#home",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf7f1",
+  "theme_color": "#12324a",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fbf8f2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>TourMate - Travel with locals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="TourMate home">
+      <span class="brand-mark">TM</span>
+      <span>TourMate</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#explore">Destinations</a>
+      <a href="#explore">Find a guide</a>
+      <a href="#groups">Group tours</a>
+      <a href="#bookings">My bookings</a>
+      <a href="#messages">Messages</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" aria-label="Search" data-go="explore">⌕</button>
+      <button class="text-button" id="loginButton" data-auth="login">Log in</button>
+      <button class="primary-button small" id="signupButton" data-auth="signup">Sign up</button>
+      <button class="account-button" id="accountButton" hidden>My account</button>
+      <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="#home">Home</a>
+    <a href="#explore">Find a guide</a>
+    <a href="#groups">Group tours</a>
+    <a href="#bookings">My bookings</a>
+    <a href="#messages">Messages</a>
+    <a href="#dashboard">Guide dashboard</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <main>
+    <section class="view active" id="home" data-view>
+      <div class="hero">
+        <div class="hero-shade"></div>
+        <div class="hero-content reveal">
+          <p class="eyebrow light">Meet the place, not just the map</p>
+          <h1>Find your<br>local story</h1>
+          <p class="hero-copy">Authentic experiences. Real people. A more meaningful way to travel.</p>
+          <form class="hero-search" id="heroSearch">
+            <span aria-hidden="true">⌖</span>
+            <input id="destinationInput" aria-label="Destination" placeholder="Where are you going?" autocomplete="off">
+            <button type="submit" aria-label="Search tours and guides">Search</button>
+          </form>
+          <div class="trust-row">
+            <span>◎ Local experts</span>
+            <span>♢ Verified guides</span>
+            <span>◌ Unique experiences</span>
+          </div>
+        </div>
+        <span class="scribble hero-note">Better people.<br>Brighter places.</span>
+      </div>
+
+      <section class="story-section" id="about">
+        <div class="story-heading reveal">
+          <p class="eyebrow">Why travel with locals</p>
+          <h2>Deeper journeys,<br>brighter memories</h2>
+        </div>
+        <p class="story-copy reveal">Local guides turn places into stories — sharing hidden gems, authentic food, and real connections that stay with you long after the trip.</p>
+        <div class="benefits">
+          <article><i>⌑</i><div><h3>Hidden gems</h3><p>Go beyond the usual.</p></div></article>
+          <article><i>♡</i><div><h3>Real connections</h3><p>Meet the people who call it home.</p></div></article>
+          <article><i>♧</i><div><h3>Positive impact</h3><p>Support local communities.</p></div></article>
+        </div>
+      </section>
+
+      <section class="featured-section" id="experiences">
+        <div class="section-title reveal">
+          <div><p class="eyebrow">Made for curious people</p><h2>Stories worth travelling for</h2></div>
+          <button class="outline-button" data-go="explore">View all guides</button>
+        </div>
+        <div class="experience-grid">
+          <article class="experience-card reveal"><span class="destination-image destination-2" role="img" aria-label="Amalfi Coast village and sea"></span><div><span>Amalfi Coast</span><h3>Flavours, cliffs & hidden lanes</h3></div></article>
+          <article class="experience-card reveal"><span class="destination-image destination-3" role="img" aria-label="Bali rice terraces"></span><div><span>Outdoors</span><h3>Slow mornings in the wild</h3></div></article>
+        </div>
+      </section>
+    </section>
+
+    <section class="view explore-view" id="explore" data-view>
+      <div class="page-intro reveal">
+        <p class="eyebrow">Travel your way</p>
+        <h1>Explore guides</h1>
+        <p>Passionate locals and unforgettable tours, all in one place.</p>
+      </div>
+
+      <form class="filter-bar" id="filterForm">
+        <label><span>⌖</span><input id="placeFilter" placeholder="Anywhere" aria-label="Place"></label>
+        <label><span>□</span><input type="date" aria-label="Date"></label>
+        <label><span>♙</span><select aria-label="Group size"><option>Any group size</option><option>1 person</option><option>2 people</option><option>3-5 people</option></select></label>
+        <button class="teal-button" type="submit">Search</button>
+      </form>
+
+      <div class="chips" aria-label="Guide categories">
+        <button class="chip active" data-category="All">All</button>
+        <button class="chip" data-category="City tours">City tours</button>
+        <button class="chip" data-category="Food & drink">Food & drink</button>
+        <button class="chip" data-category="Nature">Nature & outdoors</button>
+        <button class="chip" data-category="Culture">Art & culture</button>
+        <button class="chip" data-category="History">History</button>
+      </div>
+      <p class="result-count" id="resultCount"></p>
+      <div class="guide-grid" id="guideGrid"></div>
+      <div class="empty-state" id="emptyState" hidden><span>⌕</span><h2>No guides found</h2><p>Try another place or category.</p></div>
+      <section class="explore-tours" aria-labelledby="exploreToursTitle">
+        <div class="section-title"><div><p class="eyebrow">Explore together</p><h2 id="exploreToursTitle">Tours & experiences</h2></div><button class="outline-button" data-go="groups">All group tours</button></div>
+        <div class="tour-grid" id="exploreTourGrid"></div>
+        <div class="empty-state" id="emptyTourState" hidden><span>⌕</span><h2>No tours found</h2><p>Try another destination.</p></div>
+      </section>
+    </section>
+
+    <section class="view profile-view" id="profile" data-view>
+      <button class="back-button" data-go="explore">← Back to guides</button>
+      <div class="profile-layout" id="profileContent"></div>
+    </section>
+
+    <section class="view content-view" id="groups" data-view>
+      <div class="page-intro"><p class="eyebrow">Explore together</p><h1>Group tours</h1><p>Share the experience with curious travellers like you.</p></div>
+      <div class="tour-grid" id="groupGrid"></div>
+    </section>
+
+    <section class="view content-view" id="bookings" data-view>
+      <div class="page-intro"><p class="eyebrow">Your travels</p><h1>My bookings</h1><p>Keep every upcoming adventure in one place.</p></div>
+      <div class="tab-row"><button class="tab active" data-booking-tab="upcoming">Upcoming</button><button class="tab" data-booking-tab="completed">Completed</button></div>
+      <div id="bookingList" class="stack-list"></div>
+    </section>
+
+    <section class="view content-view" id="messages" data-view>
+      <div class="page-intro"><p class="eyebrow">Stay connected</p><h1>Messages</h1><p>Plan the details with your local guide.</p></div>
+      <div class="messages-layout"><div class="conversation-list" id="conversationList"></div><div class="conversation-panel" id="conversationPanel"></div></div>
+    </section>
+
+    <section class="view content-view" id="dashboard" data-view>
+      <div class="page-intro"><p class="eyebrow">Your guide space</p><h1>Guide dashboard</h1><p>Manage your profile, tours and booking requests.</p></div>
+      <div id="dashboardContent"></div>
+    </section>
+  </main>
+
+  <nav class="mobile-tabbar" aria-label="Quick navigation">
+    <button type="button" data-go="home" data-tab="home" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></button>
+    <button type="button" data-go="explore" data-tab="explore" aria-label="Explore guides and tours"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.2 16.2 4.3 4.3"/></svg><span>Explore</span></button>
+    <button type="button" data-go="bookings" data-tab="bookings" aria-label="My trips"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M3 12h18"/></svg><span>Trips</span></button>
+    <button type="button" data-go="messages" data-tab="messages" aria-label="Messages"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H8l-5 3V6a1 1 0 0 1 1-1z"/><path d="M7 9h10M7 13h7"/></svg><span>Inbox</span></button>
+    <button type="button" data-me data-tab="me" aria-label="My account"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Me</span></button>
+  </nav>
+
+  <footer class="site-footer"><div><a class="brand" href="#home"><span class="brand-mark">TM</span><span>TourMate</span></a><p>Good people. Great journeys.</p></div><div><a href="#explore">Find a guide</a><a href="#groups">Group tours</a><a href="#bookings">Bookings</a></div><small>© 2026 TourMate · UI prototype</small></footer>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" id="modalContent" role="dialog" aria-modal="true"></div></div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
